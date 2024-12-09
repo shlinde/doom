@@ -78,8 +78,13 @@
 
 
 ;;; Language Packages
+;;;; Org
 (package! org-modern)
 (package! doct)
+
+;;;; Python
+(package! pyvenv)
+(package! lsp-pyright)
 
 ;;; Email Packages
 
