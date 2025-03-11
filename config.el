@@ -1,4 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;;
 
 ;;;; Better Defaults
 (setq-default delete-by-moving-to-trash t
@@ -16,8 +17,7 @@
 
 (global-subword-mode 1)                            ; Iterate through CamelCase words
 
-
-
+;;;; Appearance
 ;; When working on a device with a battery, show the percentage.
 (require 'battery)
 (if (and battery-status-function
@@ -25,51 +25,53 @@
                      "N/A")))
     (prin1-to-string `(display-battery-mode 1))
   "")
-(display-time-mode 1)                              ; Enable time in mode-line
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
-(setq doom-theme 'doom-one-light)
 
-;;;; General
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
+;; Time in modeline
+(display-time-mode 1)                              ; Enable time in mode-line
+
+;; Line Numbers
 (setq display-line-numbers-type `relative)
 
-;;;; Splash Image
+;; Splash Image
 (defvar fancy-splash-image-directory
   (expand-file-name "misc/splash-images/" doom-user-dir)
   "Directory in which to look for splash image templates.")
-
 (setq fancy-splash-image (expand-file-name "Mx-butterfly-template.svg" fancy-splash-image-directory))
 
+;; Font
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
+
+;; Theme
+(setq doom-theme 'doom-one)
 
 ;;; Python
 ;; Virtual environment
-(defun shl-python-hook ()
-  "Activate virtual environment and start LSP."
-  (let* ((venv_path (concat (locate-dominating-file "." "pyproject.toml") ".venv/")))
-    (with-eval-after-load 'pyvenv
-      (pyvenv-activate venv_path))
-    (with-eval-after-load 'lsp-mode
-      (require 'lsp-pyright)
-      (lsp))))
+;; (defun shl-python-hook ()
+;;   "Activate virtual environment and start LSP."
+;;   (let* ((venv_path (concat (locate-dominating-file "." "pyproject.toml") ".venv/")))
+;;     (with-eval-after-load 'pyvenv
+;;       (pyvenv-activate venv_path))
+;;     (with-eval-after-load 'lsp-mode
+;;       (require 'lsp-pyright)
+;;       (lsp))))
 
-(use-package! python
-  :config
-  (setopt python-check-command "ruff")
-  (add-hook 'python-mode-hook #'flymake-mode))
+;; (use-package! python
+;;   :config
+;;   (setopt python-check-command "ruff")
+;;   (add-hook 'python-mode-hook #'flymake-mode))
 
-(use-package! pyvenv
-  :hook (python-base-mode . shl-python-hook))
+;; (use-package! pyvenv
+;;   :hook (python-base-mode . shl-python-hook))
 
-(use-package! lsp-pyright
-  :custom (lsp-pyright-langserver-command "basedpyright"))
+;; FIX: Errors with gif as unkwown error format
+;; (use-package! lsp-pyright
+;;   :custom (lsp-pyright-langserver-command "basedpyright"))
 
 
+;;;; AI
 (use-package! gptel
   :commands (gptel gptel-send)
-  :bind (("C-c i" . gptel-menu)
-	 ("C-c I" . gptel-send))
   :config
   (setq gptel-default-mode 'org-mode)
   (setq gptel-model 'claude-3-7-sonnet-20250219
@@ -83,3 +85,20 @@
       (:prefix ("l" . "LLM")
        :desc "Send to Gptel" "l" #'gptel-send
        :desc "Gptel Menu" "m" #'gptel-menu))
+
+
+(setq org-directory "~/home/data/org")
+(setq org-roam-directory "~/home/data/org")
+
+(use-package aidermacs
+  :bind (("C-c p" . aidermacs-transient-menu))
+  :config
+                                        ; Enable minor mode for Aider files
+  (aidermacs-setup-minor-mode)
+  ;; Use vterm backend (default is comint)
+  (setq aidermacs-backend 'vterm)
+  :custom
+                                        ; See the Configuration section below
+  (aidermacs-auto-commits t)
+  (aidermacs-use-architect-mode t)
+  (aidermacs-default-model "sonnet"))
