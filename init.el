@@ -56,7 +56,9 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       (format
+        +onsave
+        +lsp)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;multiple-cursors  ; editing in many places at once
@@ -85,8 +87,7 @@
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends
-       (debugger
-        +lsp)          ; FIXME stepping through code, to help you add bugs
+       (debugger)
        direnv
        ;; docker
        ;;editorconfig      ; let someone else argue about tabs vs spaces
@@ -94,8 +95,7 @@
        (eval +overlay)     ; run code, run (also, repls)
        (lookup
         +docsets)              ; navigate your code and its documentation
-       (lsp
-        +peek)               ; M-x vscode
+       (lsp +eglot)
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -187,7 +187,9 @@
        (yaml
         +lsp
         +tree-sitter)              ; JSON, but readable
-       ;;zig               ; C, but simpler
+       (zig
+        +lsp
+        +tree-sitter)               ; C, but simpler
 
        :email
        ;;(mu4e +org +gmail)
