@@ -43,7 +43,7 @@
       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 12))
 
 ;; Theme
-(setq doom-theme 'doom-vibrant)
+(setq doom-theme 'ef-autumn)
 
 ;;; Python
 ;; Virtual environment
@@ -83,7 +83,18 @@
                         :stream t                             ;Streaming responses
                         :key (getenv "ANTHROPIC_API_KEY"))))
 
-(add-hook 'ef-themes-post-load-hook #'shl--ef-themes-mode-line)
+(use-package! ef-themes
+  :config
+  (setq ef-themes-mixed-fonts t
+        ef-themes-variable-pitch-ui t)
+  (defun shl--ef-themes-mode-line ()
+    "Tweak the style of the mode lines."
+    (ef-themes-with-colors
+     (custom-set-faces
+      `(mode-line ((,c :background ,bg-active :foreground ,fg-main :box (:line-width 1 :color ,fg-dim))))
+      `(mode-line-inactive ((,c :box (:line-width 1 :color ,bg-active)))))))
+
+  (add-hook 'doom-load-theme-hook #'shl--ef-themes-mode-line))
 
 (map! :leader
       (:prefix ("l" . "LLM")
