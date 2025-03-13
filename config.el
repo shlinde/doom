@@ -47,27 +47,31 @@
 
 ;;; Python
 ;; Virtual environment
-;; (defun shl-python-hook ()
-;;   "Activate virtual environment and start LSP."
-;;   (let* ((venv_path (concat (locate-dominating-file "." "pyproject.toml") ".venv/")))
-;;     (with-eval-after-load 'pyvenv
-;;       (pyvenv-activate venv_path))
-;;     (with-eval-after-load 'lsp-mode
-;;       (require 'lsp-pyright)
-;;       (lsp))))
+(defun shl-python-hook ()
+  "Activate virtual environment and start LSP."
+  (let* ((venv_path (concat (locate-dominating-file "." "pyproject.toml") ".venv/")))
+    (with-eval-after-load 'pyvenv
+      (pyvenv-activate venv_path))
+    (with-eval-after-load 'lsp-mode
+      (require 'lsp-pyright)
+      (lsp))))
 
-;; (use-package! python
-;;   :config
-;;   (setopt python-check-command "ruff")
-;;   (add-hook 'python-mode-hook #'flymake-mode))
+(use-package! python
+  :config
+  (setopt python-check-command "ruff")
+  (add-hook 'python-mode-hook #'flymake-mode))
 
-;; (use-package! pyvenv
-;;   :hook (python-base-mode . shl-python-hook))
+(use-package! pyvenv
+  :hook (python-base-mode . shl-python-hook))
+
 
 ;; FIX: Errors with gif as unkwown error format
 ;; (use-package! lsp-pyright
 ;;   :custom (lsp-pyright-langserver-command "basedpyright"))
-
+(require 'compile)
+(add-to-list 'compilation-error-regexp-alist-alist
+             '(pyright "^[[:blank:]]+\\(.+\\):\\([0-9]+\\):\\([0-9]+\\).*$" 1 2 3))
+(add-to-list 'compilation-error-regexp-alist 'pyright)
 
 ;;;; AI
 (use-package! gptel
