@@ -43,7 +43,7 @@
       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
 
 ;; Theme
-(setq doom-theme 'ef-autumn)
+(setq doom-theme 'gruber-darker)
 
 ;;; Python
 ;; Virtual environment
@@ -90,11 +90,11 @@
   (defun shl--ef-themes-mode-line ()
     "Tweak the style of the mode lines."
     (ef-themes-with-colors
-     (custom-set-faces
-      `(mode-line ((,c :background ,bg-active :foreground ,fg-main :box (:line-width 1 :color ,fg-dim))))
-      `(mode-line-inactive ((,c :box (:line-width 1 :color ,bg-active)))))))
+      (custom-set-faces
+       `(mode-line ((,c :background ,bg-active :foreground ,fg-main :box (:line-width 1 :color ,fg-dim))))
+       `(mode-line-inactive ((,c :box (:line-width 1 :color ,bg-active))))))))
 
-  (add-hook 'doom-load-theme-hook #'shl--ef-themes-mode-line))
+;; (add-hook 'doom-load-theme-hook #'shl--ef-themes-mode-line))
 
 (map! :leader
       (:prefix ("l" . "LLM")
@@ -102,8 +102,8 @@
        :desc "Gptel Menu" "m" #'gptel-menu))
 
 
-(setq org-directory "~/home/data/org")
-(setq org-roam-directory "~/home/data/org")
+(setq org-directory "~/data/org")
+(setq org-roam-directory "~/data/org")
 
 (use-package aidermacs
   :bind (("C-c p" . aidermacs-transient-menu))
