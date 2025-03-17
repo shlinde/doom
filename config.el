@@ -43,7 +43,11 @@
       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
 
 ;; Theme
+<<<<<<< HEAD
 (setq doom-theme 'spacemacs-light)
+=======
+(setq doom-theme 'gruber-darker)
+>>>>>>> c383af3653ef43c7edb7b99cab7ec29c82160e70
 
 ;;; Python
 ;; Virtual environment
@@ -102,8 +106,8 @@
        :desc "Gptel Menu" "m" #'gptel-menu))
 
 
-(setq org-directory "~/home/data/org")
-(setq org-roam-directory "~/home/data/org")
+(setq org-directory "~/data/org")
+(setq org-roam-directory "~/data/org")
 
 (use-package aidermacs
   :bind (("C-c p" . aidermacs-transient-menu))

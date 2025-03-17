@@ -6,3 +6,4 @@
 (package! lsp-treemacs :disable t)
 ;; (package! lsp-pyright)
 (package! ef-themes)
+(package! gruber-darker-theme)
