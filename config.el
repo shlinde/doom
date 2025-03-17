@@ -39,11 +39,11 @@
 (setq fancy-splash-image (expand-file-name "Mx-butterfly-template.svg" fancy-splash-image-directory))
 
 ;; Font
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-bold)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
 
 ;; Theme
-(setq doom-theme 'ef-autumn)
+(setq doom-theme 'spacemacs-light)
 
 ;;; Python
 ;; Virtual environment
@@ -90,11 +90,11 @@
   (defun shl--ef-themes-mode-line ()
     "Tweak the style of the mode lines."
     (ef-themes-with-colors
-     (custom-set-faces
-      `(mode-line ((,c :background ,bg-active :foreground ,fg-main :box (:line-width 1 :color ,fg-dim))))
-      `(mode-line-inactive ((,c :box (:line-width 1 :color ,bg-active)))))))
+      (custom-set-faces
+       `(mode-line ((,c :background ,bg-active :foreground ,fg-main :box (:line-width 1 :color ,fg-dim))))
+       `(mode-line-inactive ((,c :box (:line-width 1 :color ,bg-active))))))))
 
-  (add-hook 'doom-load-theme-hook #'shl--ef-themes-mode-line))
+;; (add-hook 'doom-load-theme-hook #'shl--ef-themes-mode-line))
 
 (map! :leader
       (:prefix ("l" . "LLM")
