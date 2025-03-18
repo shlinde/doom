@@ -39,11 +39,11 @@
 (setq fancy-splash-image (expand-file-name "Mx-butterfly-template.svg" fancy-splash-image-directory))
 
 ;; Font
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-bold)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light))
 
 ;; Theme
-(setq doom-theme 'gruber-darker)
+(setq doom-theme 'leuven)
 
 ;;; Python
 ;; Virtual environment
