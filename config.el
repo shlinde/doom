@@ -33,17 +33,17 @@
 (setq display-line-numbers-type `relative)
 
 ;; Splash Image
-(defvar fancy-splash-image-directory
-  (expand-file-name "misc/splash-images/" doom-user-dir)
-  "Directory in which to look for splash image templates.")
-(setq fancy-splash-image (expand-file-name "Mx-butterfly-template.svg" fancy-splash-image-directory))
+; (defvar fancy-splash-image-directory
+;   (expand-file-name "misc/splash-images/" doom-user-dir)
+;   "Directory in which to look for splash image templates.")
+; (setq fancy-splash-image (expand-file-name "Mx-butterfly-template.svg" fancy-splash-image-directory))
 
 ;; Font
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13 :weight 'semi-light))
+(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 13 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "RobotoMono Nerd Font" :size 13 :weight 'semi-light))
 
 ;; Theme
-(setq doom-theme 'leuven)
+(setq doom-theme 'modus-operandi)
 
 ;;; Python
 ;; Virtual environment
