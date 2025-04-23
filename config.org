@@ -2,6 +2,16 @@
 #+author: Sebastian Hempel Linde
 #+created: <2025-04-22 Tue>
 
+* System Configuration
+
+** Keyboard Layout and Repeat Rate
+
+#+begin_src sh
+xset r rate 250 60
+#+end_src
+
+#+RESULTS:
+
 * General Configuration
 #+begin_src emacs-lisp :tangel "config.el"
 ;;; config.el --- Doom Configuration -*- lexical-binding: t; -*-
