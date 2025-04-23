@@ -64,6 +64,7 @@ xset r rate 250 60
        :tools
        (eval +overlay)
        (lookup +docsets)
+       (lsp +peek)
        magit
        pdf
        tree-sitter
@@ -98,8 +99,27 @@ Use the Modus themes from Protesilaos as they just give the best readability and
 #+end_src
 
 * Packages
+
+** Disabled
+
+#+begin_src emacs-lisp :tangle "packages.el"
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+
+(package! doom-themes :disable t)
+#+end_src
+
 * Applications
 * Language Configuration
+
+** Python
+
+*** LSP
+
+#+begin_src emacs-lisp :tangle "config.el"
+(use-package! lsp-pyright
+  :config (setopt lsp-pyright-langserver-command "basedpyright"))
+#+end_src
 
 ** Org Mode
 

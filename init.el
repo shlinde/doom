@@ -35,6 +35,7 @@
        :tools
        (eval +overlay)
        (lookup +docsets)
+       (lsp +peek)
        magit
        pdf
        tree-sitter
