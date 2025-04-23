@@ -15,8 +15,6 @@ xset r rate 250 60
 * General Configuration
 #+begin_src emacs-lisp :tangel "config.el"
 ;;; config.el --- Doom Configuration -*- lexical-binding: t; -*-
-
-
 #+end_src
 ** Personal Information
 
@@ -27,8 +25,86 @@ xset r rate 250 60
 #+end_src
 ** Doom Configuration
 *** Modules
+
+#+begin_src emacs-lisp :tangle "init.el"
+;;; init.el -*- lexical-binding: t; -*-
+
+(doom! :input
+       :completion
+       (corfu +orderless +dabbrev +icons)
+       (vertico +icons)
+
+       :ui
+       doom
+       hl-todo
+       modeline
+       ophints
+       (popup +defaults)
+       (vc-gutter +pretty)
+
+       :editor
+       (evil +everywhere)
+       fold
+       (format +onsave)
+       snippets
+
+       :emacs
+       dired
+       electric
+       undo
+       vc
+
+       :term
+       eshell
+       vterm
+
+       :checkers
+       (syntax +icons +childframe)
+
+       :tools
+       (eval +overlay)
+       (lookup +docsets)
+       magit
+       pdf
+       tree-sitter
+
+       :os
+
+       :lang
+       emacs-lisp
+       (python +lsp +tree-sitter +pyright)
+       (org +pretty)
+
+       :email
+
+       :app
+       calendar
+
+       :config
+       ;; literate
+       (default +bindings +smartparens))
+#+end_src
+
 *** Visuals
+
+Use the Modus themes from Protesilaos as they just give the best readability and are consistent.
+
+#+begin_src emacs-lisp :tangle "config.el"
+;;;; Theme
+(setq doom-theme 'modus-vivendi
+      doom-font (font-spec :family "RobotoMono Nerd Font" :size 13 :weight 'semi-bold)
+      doom-variable-pitch-font (font-spec :family "RobotoMono Nerd Font" :size 13)
+      display-line-numbers-type nil)
+#+end_src
 
 * Packages
 * Applications
 * Language Configuration
+
+** Org Mode
+
+**** General Setup
+
+#+begin_src emacs-lisp :tangle "config.el"
+(setq org-directory "~/data/org/")
+#+end_src
