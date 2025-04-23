@@ -3,8 +3,8 @@
       user-mail-address "sebastian@hempellinde.com")
 
 ;;;; Theme
-(setq doom-theme 'modus-operandi-tinted
-      doom-font (font-spec :family "RobotoMono Nerd Font" :size 13 :weight 'semi-light)
+(setq doom-theme 'modus-vivendi-deuteranopia
+      doom-font (font-spec :family "RobotoMono Nerd Font" :size 13 :weight 'semi-bold)
       doom-variable-pitch-font (font-spec :family "RobotoMono Nerd Font" :size 13)
       display-line-numbers-type nil)
 

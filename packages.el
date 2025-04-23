@@ -2,3 +2,5 @@
 ;;; $DOOMDIR/packages.el
 
 (package! doom-themes :disable t)
+
+
