@@ -10,7 +10,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 13 :weight 'semi-bold)
-     doom-variable-pitch-font (font-spec :family "RobotoMono Nerd Font" :size 13r)
+     doom-variable-pitch-font (font-spec :family "RobotoMono Nerd Font" :size 13))
 
 (setq doom-theme 'modus-vivendi)
 

@@ -1,0 +1,24 @@
+#+title: GNU Emacs Configuration - Doom Edition
+#+author: Sebastian Hempel Linde
+#+created: <2025-04-22 Tue>
+
+* General Configuration
+#+begin_src emacs-lisp :tangel "config.el"
+;;; config.el --- Doom Configuration -*- lexical-binding: t; -*-
+
+
+#+end_src
+** Personal Information
+
+#+begin_src emacs-lisp :tangle "config.el"
+;;; Personal Information
+(setq user-full-name "Sebastian Hempel Linde"
+      user-mail-address "sebastian@hempellinde.com")
+#+end_src
+** Doom Configuration
+*** Modules
+*** Visuals
+
+* Packages
+* Applications
+* Language Configuration
