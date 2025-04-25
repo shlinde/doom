@@ -4,3 +4,5 @@
 (package! doom-themes :disable t)
 
 
+
+(package! gptel)

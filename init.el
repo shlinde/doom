@@ -40,7 +40,6 @@
        pdf
        tree-sitter
 
-       :os
 
        :lang
        emacs-lisp

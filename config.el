@@ -32,6 +32,16 @@
       scroll-margin 10)                    ; Always preserve 10 lines.
 
 (global-subword-mode 1)                    ; Iterate through CamelCase words.
+(global-set-key [remap dabbrev-expand]
+                #'hippie-expand)           ; Replace dabbrev with hippie
+
+(map! "M-," #'embark-act)
+
+(use-package! gptel
+  :commands gptel gptel-menu gptel-mode gptel-send
+  :config
+  (gptel-make-gemini "Gemini" :key (getenv "GEMINI_API_KEY") :stream t)
+  (setq gptel-default-mode #'org-mode))
 
 (use-package! lsp-pyright
   :config (setopt lsp-pyright-langserver-command "basedpyright"))

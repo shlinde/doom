@@ -68,7 +68,10 @@ Modified defaults.
       scroll-margin 10)                    ; Always preserve 10 lines.
 
 (global-subword-mode 1)                    ; Iterate through CamelCase words.
+(global-set-key [remap dabbrev-expand]
+                #'hippie-expand)           ; Replace dabbrev with hippie
 #+end_src
+
 
 ** Keybindings
 
@@ -154,6 +157,28 @@ Modified defaults.
 
 #+begin_src emacs-lisp :tangle "packages.el"
 #+end_src
+
+** Tools
+
+*** GPTel
+
+#+begin_src emacs-lisp :tangle "packages.el"
+(package! gptel)
+#+end_src
+
+#+begin_src emacs-lisp :tangle "config.el"
+(use-package! gptel
+  :commands gptel gptel-menu gptel-mode gptel-send
+  :config
+  (gptel-make-gemini "Gemini" :key (getenv "GEMINI_API_KEY") :stream t)
+  (setq
+   gptel-model 'gemini-2.0-flash-thinking-exp-01-21
+   gptel-backend (gptel-make-gemini "Gemini"
+                   :key (getenv "GEMINI_API_KEY")
+                   :stream t))
+  (setq gptel-default-mode #'org-mode))
+#+end_src
+
 
 * Applications
 * Language Configuration
